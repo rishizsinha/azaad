@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UC Berkeley Azaad</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+
+      .carousel-inner >
+       .item > 
+        img { 
+          margin: 0 auto; 
+        }
+
+      input[type="radio"] {
+        margin-left: 20px;
+        margin-right: 10px;
+      }
+
+    </style>
+
+  </head>
+
+  <body data-spy="scroll" data-target=".navbar-collapse">
+
+
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse" role="navigation">
+      <div class="container">
+
+        <div class="navbar-header">
+          <!-- Navigation Button -->
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only"> Toggle Navigation </span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="cover.html" style="padding: 0px 15px;">
+            <img src="images/azaadlogoxxs.png" class="logo" />
+          </a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html" name="index">About Us</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="">Competitions</a></li>
+            <li><a href="">Gigs</a></li>
+            <li><a href="">Alumni</a></li>
+            <li class="active"><a href="contact.html">Contact Us!</a></li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->  
+      </div>
+       <!-- /.container -->
+    </nav> 
+
+    <?php
+      
+      if ($_POST["submit"]) {
+
+       /* $result="<div class='alert alert-success'>Submitted!</div>";
+    */
+        $result="ok cool";
+      }
+
+    ?>
+
+    <div class="container">
+      <h1> Contact Us! </h1>
+      <p class="lead"> Send your info, we'll get back to you in a couple days </p>
+
+      <?php
+        echo $result;
+      ?>
+
+      <form role="form">
+        <!-- Name -->
+        <div class="form-group">
+          <label for="inputName">Name</label>
+          <input type="text" class="form-control" id="inputName" placeholder="Name">
+        </div>
+        <!-- Email Address -->
+        <div class="form-group">
+          <label for="inputEmail1">Email address</label>
+          <input type="email" class="form-control" id="inputEmail1" placeholder="Email Adress">
+        </div>
+        <!-- Contact Options -->
+        <div class="form-group">
+          <label for="contactOptions">Da F you want?</label> </br>
+          <input type="radio" name="opt" value="gigopt" id="gigopt">Gig Request </br>
+          <input type="radio" name="opt" value="other" id="other">General </br>
+        </div>
+        <!-- Gig: Date -->
+        <div class="form-group gig">
+          <label for="gigDate">Date of Gig</label>
+          <input type="date" class="form-control" id="gigDate" placeholder="Date">
+        </div>
+        <!-- Gig: Location-->
+        <div class="form-group gig">
+          <label for="loc">Location Name and Address</label>
+          <input type="text" class="form-control" id="loc" placeholder="Location">
+        </div>
+        <!-- General Comment-->
+        <div class="form-group">
+          <label for="generalComment">Questions, Comments?</label>
+          <textarea class="form-control" id="generalComment" placeholder="Additional Comments"></textarea>
+        </div>
+
+        <button type="submit" name="submit" class="btn btn-success" value="submit">
+          Submit
+        </button>
+      </form>
+    </div>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+
+      $("#other").click(function() {
+        $(".gig").hide();
+      })
+
+      $("#gigopt").click(function() {
+        $(".gig").show();
+      })
+    </script>
+
+    <?php
+      $emailTo="rishi.z.sinha@gmail.com";
+      $subject="Azaad Contact-Us Submission";
+      $body="test";
+      $headers="From: rishi.z.sinha@berkeley.edu";
+
+      mail($emailTo, $subject, $body, $headers);
+
+    ?>
+
+  </body>
+</html>
